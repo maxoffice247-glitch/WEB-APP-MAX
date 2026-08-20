@@ -1,8 +1,8 @@
 // middleware.js
-// Thay vì redirect (đổi hẳn URL), giờ trả thẳng 1 trang HTML có chứa
-// iframe trỏ tới đúng webapp Apps Script -> giữ nguyên URL đẹp trên
-// thanh địa chỉ, giống hệt cách trang workspace.maxoffice.vn đang làm
-// khi bấm vào từng card.
+// Trả về trang HTML chứa iframe trỏ tới đúng webapp Apps Script,
+// giữ nguyên URL đẹp trên thanh địa chỉ.
+// Riêng gpkd.maxoffice.vn có thêm thẻ Open Graph để hiện đẹp khi
+// chia sẻ link trên Facebook/Zalo (quảng cáo).
 
 export const config = {
   matcher: "/:path*",
@@ -10,12 +10,18 @@ export const config = {
 
 const MAP = {
   "gpkd.maxoffice.vn": {
-    title: "MAX GPKD",
-    target: "https://script.google.com/macros/s/AKfycbxPSzfvJ70-XLuLWcv6xXrOExB7YJ2D3SXHkEaRjkVV2ItnI-wfN30hfyMcdt9rrjMi/exec",
+    title: "MAX GPKD – Soạn hồ sơ đổi địa chỉ GPKD tự động",
+    description:
+      "Công cụ tự động soạn thảo hồ sơ thay đổi địa chỉ đăng ký kinh doanh (GPKD) nhanh chóng, chính xác — MAX OFFICE.",
+    image: "https://i.ibb.co/604LcqLc/LOGO-HD-MAX.png",
+    url: "https://gpkd.maxoffice.vn",
+    target:
+      "https://script.google.com/macros/s/AKfycbxPSzfvJ70-XLuLWcv6xXrOExB7YJ2D3SXHkEaRjkVV2ItnI-wfN30hfyMcdt9rrjMi/exec",
   },
   "qr.maxoffice.vn": {
     title: "MAX QR CODE",
-    target: "https://script.google.com/macros/s/AKfycbzxu1M2jHCZx78WZIcFrVdqdHqyXvFh6QHl0WBZZevU5D1XUhpAMni3zgJoEMVXY-NI/exec",
+    target:
+      "https://script.google.com/macros/s/AKfycbzxu1M2jHCZx78WZIcFrVdqdHqyXvFh6QHl0WBZZevU5D1XUhpAMni3zgJoEMVXY-NI/exec",
   },
 };
 
@@ -24,12 +30,26 @@ export default function middleware(request) {
   const entry = MAP[host];
 
   if (entry) {
+    const ogTags = entry.description
+      ? `
+  <meta name="description" content="${entry.description}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="${entry.title}" />
+  <meta property="og:description" content="${entry.description}" />
+  <meta property="og:image" content="${entry.image}" />
+  <meta property="og:url" content="${entry.url}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${entry.title}" />
+  <meta name="twitter:description" content="${entry.description}" />
+  <meta name="twitter:image" content="${entry.image}" />`
+      : "";
+
     const html = `<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${entry.title}</title>
+  <title>${entry.title}</title>${ogTags}
   <style>
     html, body { margin: 0; height: 100%; overflow: hidden; }
     iframe { width: 100%; height: 100%; border: none; display: block; }
@@ -46,5 +66,4 @@ export default function middleware(request) {
   }
 
   // Không khớp domain nào trong danh sách -> cho đi tiếp bình thường
-  // (áp dụng cho workspace.maxoffice.vn, web-app-max.vercel.app, v.v.)
 }
