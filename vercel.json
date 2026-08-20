@@ -1,12 +1,16 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/api/proxy?slug=home" },
-    { "source": "/qr", "destination": "/api/proxy?slug=qr" },
-    { "source": "/office", "destination": "/api/proxy?slug=office" },
-    { "source": "/lienket", "destination": "/api/proxy?slug=lienket" },
-    { "source": "/congviec", "destination": "/api/proxy?slug=congviec" },
-    { "source": "/gpkd", "destination": "/api/proxy?slug=gpkd" },
-    { "source": "/archive", "destination": "/api/proxy?slug=archive" },
-    { "source": "/payment", "destination": "/api/proxy?slug=payment" }
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "gpkd.maxoffice.vn" }],
+      "destination": "https://script.google.com/macros/s/AKfycbxPSzfvJ70-XLuLWcv6xXrOExB7YJ2D3SXHkEaRjkVV2ItnI-wfN30hfyMcdt9rrjMi/exec",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "qr.maxoffice.vn" }],
+      "destination": "https://script.google.com/macros/s/AKfycbzxu1M2jHCZx78WZIcFrVdqdHqyXvFh6QHl0WBZZevU5D1XUhpAMni3zgJoEMVXY-NI/exec",
+      "permanent": false
+    }
   ]
 }
