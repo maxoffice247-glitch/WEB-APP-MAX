@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/api/proxy?slug=home" },
+    { "source": "/qr", "destination": "/api/proxy?slug=qr" },
+    { "source": "/office", "destination": "/api/proxy?slug=office" },
+    { "source": "/lienket", "destination": "/api/proxy?slug=lienket" },
+    { "source": "/congviec", "destination": "/api/proxy?slug=congviec" },
+    { "source": "/gpkd", "destination": "/api/proxy?slug=gpkd" },
+    { "source": "/archive", "destination": "/api/proxy?slug=archive" },
+    { "source": "/payment", "destination": "/api/proxy?slug=payment" }
+  ]
+}
