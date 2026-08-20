@@ -10,9 +10,9 @@ export const config = {
 
 const MAP = {
   "gpkd.maxoffice.vn": {
-    title: "MAX GPKD – Soạn hồ sơ đổi địa chỉ GPKD tự động",
+    title: "MAX OFFICE — Hệ Thống Soạn Thảo Hồ Sơ Doanh Nghiệp Tự Động",
     description:
-      "Công cụ tự động soạn thảo hồ sơ thay đổi địa chỉ đăng ký kinh doanh (GPKD) nhanh chóng, chính xác — MAX OFFICE.",
+      "Tự động soạn thảo hồ sơ doanh nghiệp: thành lập mới, mở chi nhánh, chuyển nhượng vốn, đổi địa chỉ GPKD, Mẫu số 12 — nhanh chóng, chính xác, tiện lợi.",
     image: "https://i.ibb.co/604LcqLc/LOGO-HD-MAX.png",
     url: "https://gpkd.maxoffice.vn",
     target:
