@@ -13,7 +13,7 @@ const MAP = {
     title: "MAX OFFICE — Hệ Thống Soạn Thảo Hồ Sơ Doanh Nghiệp Tự Động",
     description:
       "Tự động soạn thảo hồ sơ doanh nghiệp: thành lập mới, mở chi nhánh, chuyển nhượng vốn, đổi địa chỉ GPKD, Mẫu số 12 — nhanh chóng, chính xác, tiện lợi.",
-    image: "https://i.ibb.co/604LcqLc/LOGO-HD-MAX.png",
+    image: "https://workspace.maxoffice.vn/og-gpkd.jpg",
     url: "https://gpkd.maxoffice.vn",
     target:
       "https://script.google.com/macros/s/AKfycbxPSzfvJ70-XLuLWcv6xXrOExB7YJ2D3SXHkEaRjkVV2ItnI-wfN30hfyMcdt9rrjMi/exec",
